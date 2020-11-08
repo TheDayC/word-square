@@ -1,9 +1,10 @@
 import * as dictionary from '../data/words.json';
 import {uniq} from 'lodash';
+import { ILetterMatrix } from '../types/square';
 
 export function parseViableWords(sequence: string, dimensions: number): string[] {
     // Immediately crop dictionary to only entries of exact dimension length.
-    const validEntries = dictionary.words.filter(word => word.length === dimensions);
+    let validEntries = dictionary.words.filter(word => word.length === dimensions);
 
     // Get unique letters from sequence.
     const splitSequence = uniq(sequence.split('')).join('');
@@ -13,7 +14,7 @@ export function parseViableWords(sequence: string, dimensions: number): string[]
 }
 
 // Granular word comparison solution to use as little memory as possible.
-function findEntryInSequence(sequence: string, dictionaryEntry: string): boolean {
+export function findEntryInSequence(sequence: string, dictionaryEntry: string): boolean {
     const asciiCount = 128;
     const characters = new Array(asciiCount);  // Create an array of 128 characters to represent an ASCII character.
 
