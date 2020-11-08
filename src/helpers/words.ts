@@ -1,6 +1,5 @@
 import * as dictionary from '../data/words.json';
 import {uniq} from 'lodash';
-import { ILetterMatrix } from '../types/square';
 
 export function parseViableWords(sequence: string, dimensions: number): string[] {
     // Immediately crop dictionary to only entries of exact dimension length.
